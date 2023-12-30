@@ -4,8 +4,8 @@ let
     pymunk
     ipython
     ipykernel
-    qdarkstyle
     pyqt5
+    pip
     spyder-kernels
     pyls-spyder
     spyder
@@ -20,6 +20,7 @@ pkgs.mkShell {
     ];
 
 shellHook = ''
+  pip install QDarkStyle==3.0.2
   spyder -p .
 '';
 
