@@ -1,0 +1,5 @@
+#+title: Todo
+
+* Learning
+** How to properly create a simulation environment in python
+** How to create a proper nix environment
