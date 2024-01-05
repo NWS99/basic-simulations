@@ -1,6 +1,7 @@
-{ pkgs ? import <nixpkgs> {} }:
-let
-  python-packages = ps: with ps; [
+with import <nixpkgs> {};
+
+(python3.buildEnv.override {
+  extraLibs = with python3Packages; [
     pymunk
     ipython
     ipykernel
@@ -10,14 +11,9 @@ let
     pyls-spyder
     spyder
   ];
-in
-  
+}).env
+
 pkgs.mkShell {
-  nativeBuildInputs = with pkgs.buildPackages; 
-    [
-      libsForQt5.oxygen
-      (python310.withPackages python-packages)
-    ];
 
 # pip install didn't work out properly
 # pip tries to uninstall the already installed QDarkStyle version, but isn't able to locate it due to nix
